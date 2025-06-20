@@ -1,2 +1,3 @@
 # ReactiveTransport
-Package for storing reactive transport formulations for incorporating into more complex models.
+
+[![Build Status](https://github.com/vcantarella/ReactiveTransport.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/vcantarella/ReactiveTransport.jl/actions/workflows/CI.yml?query=branch%3Amain)
