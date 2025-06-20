@@ -3,7 +3,13 @@ uuid = "db7a1546-86a8-4da6-be1c-2cc1229b09f8"
 authors = ["vcantarella <vcantarella@gmail.com> and contributors"]
 version = "0.1.0-DEV"
 
+[deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
+
 [compat]
+BenchmarkTools = "1.6.0"
+SpecialFunctions = "2.5.1"
 julia = "1.10"
 
 [extras]
