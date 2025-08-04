@@ -22,7 +22,7 @@ Appelo, C.A.J.; Postma, Dieke. Geochemistry, Groundwater and Pollution (p. 104).
     nothing, the results are stored in the `cr` array. 
 """
 function constant_injection!(
-    cr::Matrix,
+    cr::AbstractArray,
     t,
     x,
     c0,
@@ -30,10 +30,10 @@ function constant_injection!(
     v,
     Dl,
     )
-    @argcheck size(cr, 1) == length(x) && size(cr, 2) == length(t)
+    @argcheck size(cr, 1) == length(t)
 
     for i in eachindex(t)
-        @. cr[:, i] = c_in + (c0 - c_in) / 2 * erfc((x - v * t[i])
+       cr[i] = c_in + (c0 - c_in) / 2 * erfc((x - v * t[i])
          / (2 * sqrt.(Dl * t[i])))
     end
     return nothing
@@ -60,7 +60,7 @@ Appelo, C.A.J.; Postma, Dieke. Geochemistry, Groundwater and Pollution (p. 104).
 - `t_pulse::Real`: The time at which the pulse injection ends (at x=0).
 """
 function pulse_injection!(
-    cr::Matrix,
+    cr::AbstractArray,
     t,
     x,
     c0,
@@ -69,13 +69,13 @@ function pulse_injection!(
     Dl,
     t_pulse
     )
-    @argcheck size(cr, 1) == length(x) && size(cr, 2) == length(t)
+    @argcheck size(cr, 1) == length(t)
     ratio = (c0 - c_in) / 2
-    for j in eachindex(x), i in eachindex(t)
-        cr[j, i] = c_in .+ ratio .* (erfc.((x[j] .- v .* t[i])
+    for i in eachindex(t)
+        cr[i] = c_in .+ ratio .* (erfc.((x .- v .* t[i])
         ./ (2 .* sqrt.(Dl .* t[i]))))
         if t[i] > t_pulse
-            cr[j, i] -= ratio .* (erfc.((x[j] .- v .* (t[i] .- t_pulse))
+            cr[i] -= ratio .* (erfc.((x .- v .* (t[i] .- t_pulse))
             ./ (2 .* sqrt.(Dl .* (t[i] .- t_pulse)))))
         end
     end
