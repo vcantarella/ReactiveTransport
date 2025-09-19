@@ -21,7 +21,7 @@ StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 [compat]
 ADTypes = "1.16.0"
 BenchmarkTools = "1.6.0"
-CairoMakie = "0.14.0"
+CairoMakie = "0.14.0, 0.15"
 FileIO = "1.17.0"
 ForwardDiff = "1.0.1"
 JLD2 = "0.5.14"
