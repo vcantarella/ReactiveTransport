@@ -11,7 +11,7 @@ jobs:
         run: julia -e 'using Pkg; Pkg.add("CompatHelper")'
       - name: CompatHelper.main()
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COMPATHELPER_PRIV: ${{ secrets.DOCUMENTER_KEY }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # COMPATHELPER_PRIV: ${{ secrets.DOCUMENTER_KEY }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: julia -e 'using CompatHelper; CompatHelper.main()'
